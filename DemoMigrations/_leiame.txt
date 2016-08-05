@@ -1,0 +1,18 @@
+install-package entityframework
+
+Enable-Migrations -ContextTypeName ClientesContexto -MigrationsDirectory Infra\Config
+
+update-database -ConfigurationTypeName DemoMigrations.Infra.Config.Configuration -verbose
+
+
+** trocar no projeto existente **
+AutomaticMigrationsEnabled = false; --> arquivo config
+
+Rodar no nuget
+Add-Migration -ConfigurationTypeName DemoMigrations.Infra.Config.Configuration "Estrutura Inicial"
+update-database –TargetMigration: "Estrutura Inicial" -ConfigurationTypeName DemoMigrations.Infra.Config.Configuration -verbose
+
+
+Add-Migration -ConfigurationTypeName DemoMigrations.Infra.Config.Configuration "Criado campo idade"
+update-database –TargetMigration: "Criado campo idade" -ConfigurationTypeName DemoMigrations.Infra.Config.Configuration -verbose
+
